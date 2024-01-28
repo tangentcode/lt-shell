@@ -1,0 +1,198 @@
+[gd_scene load_steps=4 format=3 uid="uid://dbxhwrvsp7bqc"]
+
+[ext_resource type="Script" path="res://Matrix.gd" id="2_6mn8s"]
+[ext_resource type="Script" path="res://Block.gd" id="2_btpw3"]
+[ext_resource type="Script" path="res://WebSocket.gd" id="4_ff64o"]
+
+[node name="Scene" type="Node2D"]
+
+[node name="bg" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(640, 480)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_top = -6.0
+offset_right = 1187.0
+offset_bottom = 689.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.427451, 0.458824, 0.478431, 1)
+metadata/_edit_lock_ = true
+
+[node name="WebSocket" type="Node" parent="." node_paths=PackedStringArray("matrix")]
+script = ExtResource("4_ff64o")
+matrix = NodePath("../Matrix")
+
+[node name="controls" type="HBoxContainer" parent="WebSocket"]
+custom_minimum_size = Vector2(0, 200)
+offset_left = 320.0
+offset_top = 384.0
+offset_right = 1120.0
+offset_bottom = 590.0
+
+[node name="history" type="TextEdit" parent="WebSocket/controls"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "c "
+editable = false
+wrap_mode = 1
+autowrap_mode = 1
+
+[node name="col" type="VBoxContainer" parent="WebSocket/controls"]
+layout_mode = 2
+
+[node name="buttons" type="VBoxContainer" parent="WebSocket/controls/col"]
+layout_mode = 2
+
+[node name="row0" type="HBoxContainer" parent="WebSocket/controls/col/buttons"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="J" type="Button" parent="WebSocket/controls/col/buttons/row0"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.427451, 0.572549, 0.835294, 1)
+text = "J"
+
+[node name="O" type="Button" parent="WebSocket/controls/col/buttons/row0"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.952941, 0.886275, 0, 1)
+text = "O"
+
+[node name="Z" type="Button" parent="WebSocket/controls/col/buttons/row0"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(1, 0.411765, 0.345098, 1)
+text = "Z"
+
+[node name="L" type="Button" parent="WebSocket/controls/col/buttons/row0"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.875024, 0.493094, 0.165116, 1)
+text = "L"
+
+[node name="I" type="Button" parent="WebSocket/controls/col/buttons/row0"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.305882, 0.588235, 0.670588, 1)
+text = "I"
+
+[node name="S" type="Button" parent="WebSocket/controls/col/buttons/row0"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.419608, 0.94902, 0.419608, 1)
+text = "S"
+
+[node name="T" type="Button" parent="WebSocket/controls/col/buttons/row0"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.764706, 0.333333, 0.85098, 1)
+text = "T"
+
+[node name="row1" type="HBoxContainer" parent="WebSocket/controls/col/buttons"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="left" type="Button" parent="WebSocket/controls/col/buttons/row1"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "<"
+
+[node name="down" type="Button" parent="WebSocket/controls/col/buttons/row1"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "v"
+
+[node name="right" type="Button" parent="WebSocket/controls/col/buttons/row1"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = ">"
+
+[node name="row2" type="HBoxContainer" parent="WebSocket/controls/col/buttons"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="cc" type="Button" parent="WebSocket/controls/col/buttons/row2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "("
+
+[node name="drop" type="Button" parent="WebSocket/controls/col/buttons/row2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "V"
+
+[node name="cw" type="Button" parent="WebSocket/controls/col/buttons/row2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = ")"
+
+[node name="input" type="HBoxContainer" parent="WebSocket/controls/col"]
+custom_minimum_size = Vector2(400, 100)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TextEdit" type="TextEdit" parent="WebSocket/controls/col/input"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "TV Z>>vvv"
+wrap_mode = 1
+autowrap_mode = 1
+
+[node name="col" type="VBoxContainer" parent="WebSocket/controls/col/input"]
+layout_mode = 2
+
+[node name="send" type="Button" parent="WebSocket/controls/col/input/col"]
+layout_mode = 2
+text = "send	"
+
+[node name="clear" type="Button" parent="WebSocket/controls/col/input/col"]
+layout_mode = 2
+text = "clear input"
+
+[node name="reset" type="Button" parent="WebSocket/controls/col/input/col"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "reset game"
+
+[node name="Matrix" type="Node2D" parent="."]
+position = Vector2(88, 48)
+script = ExtResource("2_6mn8s")
+lines = Array[String](["__________", "__________", "..........", "..........", "..........", "..........", "..........", "..........", "..........", "..........", "..........", "..........", "..........", "..........", "..........", "..........", "..........", "..........", "..........", "..........", "..........", ".........."])
+
+[node name="block" type="ColorRect" parent="Matrix"]
+visible = false
+custom_minimum_size = Vector2(20, 20)
+offset_left = 320.0
+offset_top = 192.0
+offset_right = 343.0
+offset_bottom = 215.0
+color = Color(1, 0.388235, 0.278431, 1)
+script = ExtResource("2_btpw3")
+
+[node name="grid" type="ColorRect" parent="Matrix"]
+offset_left = -56.0
+offset_top = 16.0
+offset_right = 186.0
+offset_bottom = 546.0
+color = Color(0.2, 0.2, 0.2, 1)
+
+[connection signal="pressed" from="WebSocket/controls/col/buttons/row0/J" to="WebSocket" method="_on_button_pressed" binds= ["J"]]
+[connection signal="pressed" from="WebSocket/controls/col/buttons/row0/O" to="WebSocket" method="_on_button_pressed" binds= ["O"]]
+[connection signal="pressed" from="WebSocket/controls/col/buttons/row0/Z" to="WebSocket" method="_on_button_pressed" binds= ["Z"]]
+[connection signal="pressed" from="WebSocket/controls/col/buttons/row0/L" to="WebSocket" method="_on_button_pressed" binds= ["L"]]
+[connection signal="pressed" from="WebSocket/controls/col/buttons/row0/I" to="WebSocket" method="_on_button_pressed" binds= ["I"]]
+[connection signal="pressed" from="WebSocket/controls/col/buttons/row0/S" to="WebSocket" method="_on_button_pressed" binds= ["S"]]
+[connection signal="pressed" from="WebSocket/controls/col/buttons/row0/T" to="WebSocket" method="_on_button_pressed" binds= ["T"]]
+[connection signal="pressed" from="WebSocket/controls/col/buttons/row1/left" to="WebSocket" method="_on_button_pressed" binds= ["<"]]
+[connection signal="pressed" from="WebSocket/controls/col/buttons/row1/down" to="WebSocket" method="_on_button_pressed" binds= ["v"]]
+[connection signal="pressed" from="WebSocket/controls/col/buttons/row1/right" to="WebSocket" method="_on_button_pressed" binds= [">"]]
+[connection signal="pressed" from="WebSocket/controls/col/buttons/row2/cc" to="WebSocket" method="_on_button_pressed" binds= ["("]]
+[connection signal="pressed" from="WebSocket/controls/col/buttons/row2/drop" to="WebSocket" method="_on_button_pressed" binds= ["V"]]
+[connection signal="pressed" from="WebSocket/controls/col/buttons/row2/cw" to="WebSocket" method="_on_button_pressed" binds= [")"]]
+[connection signal="pressed" from="WebSocket/controls/col/input/col/send" to="WebSocket" method="_on_send_button_pressed"]
+[connection signal="pressed" from="WebSocket/controls/col/input/col/clear" to="WebSocket" method="_on_clear_pressed"]
+[connection signal="pressed" from="WebSocket/controls/col/input/col/reset" to="WebSocket" method="_on_button_pressed" binds= ["c"]]
